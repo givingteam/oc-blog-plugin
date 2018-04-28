@@ -9,6 +9,13 @@ use System\Classes\PluginBase;
 class Plugin extends PluginBase
 {
     /**
+     * @var array   Dependencies
+     */
+    public $require = [
+        'RainLab.Blog',
+    ];
+
+    /**
      * Returns information about this plugin.
      *
      * @return array
@@ -16,21 +23,11 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
+            'author'      => 'Giving Team',
+            'description' => 'HTTP API for RainLab.Blog',
+            'icon'        => 'icon-leaf',
             'name'        => 'Blog',
-            'description' => 'No description provided yet...',
-            'author'      => 'GivingTeam',
-            'icon'        => 'icon-leaf'
         ];
-    }
-
-    /**
-     * Register method, called when the plugin is first registered.
-     *
-     * @return void
-     */
-    public function register()
-    {
-
     }
 
     /**
@@ -41,56 +38,5 @@ class Plugin extends PluginBase
     public function boot()
     {
 
-    }
-
-    /**
-     * Registers any front-end components implemented in this plugin.
-     *
-     * @return array
-     */
-    public function registerComponents()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'GivingTeam\Blog\Components\MyComponent' => 'myComponent',
-        ];
-    }
-
-    /**
-     * Registers any back-end permissions used by this plugin.
-     *
-     * @return array
-     */
-    public function registerPermissions()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'givingteam.blog.some_permission' => [
-                'tab' => 'Blog',
-                'label' => 'Some permission'
-            ],
-        ];
-    }
-
-    /**
-     * Registers back-end navigation items for this plugin.
-     *
-     * @return array
-     */
-    public function registerNavigation()
-    {
-        return []; // Remove this line to activate
-
-        return [
-            'blog' => [
-                'label'       => 'Blog',
-                'url'         => Backend::url('givingteam/blog/mycontroller'),
-                'icon'        => 'icon-leaf',
-                'permissions' => ['givingteam.blog.*'],
-                'order'       => 500,
-            ],
-        ];
     }
 }

@@ -1,0 +1,17 @@
+{
+    "name": "givingteam/blog",
+    "type": "october-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "GivingTeam\\Blog\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.7",
+        "mockery/mockery": "~1.0",
+        "php-coveralls/php-coveralls": "^2.0",
+        "phpunit/phpunit": "~5.7"
+    },
+    "require": {}
+}
