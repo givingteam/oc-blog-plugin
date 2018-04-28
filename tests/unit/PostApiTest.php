@@ -4,7 +4,7 @@ use Carbon\Carbon;
 use GivingTeam\Blog\Tests\PluginTestCase;
 use RainLab\Blog\Models\Post;
 
-class PostApiText extends PluginTestCase
+class PostApiTest extends PluginTestCase
 {
     public function test_fetching_posts()
     {
