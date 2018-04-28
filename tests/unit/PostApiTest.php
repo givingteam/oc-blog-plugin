@@ -25,6 +25,7 @@ class PostApiText extends PluginTestCase
         $response = $this->get('/api/givingteam/blog/posts');
         $data = json_decode($response->getContent(), true);
 
+        $response->assertStatus(200);
         $this->assertEquals(1, $data['total']);
         $this->assertEquals(1, $data['current_page']);
         $this->assertEquals($foo->id, $data['data'][0]['id']);
@@ -35,6 +36,24 @@ class PostApiText extends PluginTestCase
         $response = $this->get('/api/givingteam/blog/posts?page=2');
         $data = json_decode($response->getContent(), true);
 
+        $response->assertStatus(200);
         $this->assertEquals(2, $data['current_page']);
+    }
+
+    public function test_fetching_a_single_post()
+    {
+        $post = new Post;
+        $post->slug = 'foo-test';
+        $post->title = 'foo';
+        $post->content = 'foo';
+        $post->published_at = Carbon::yesterday();
+        $post->published = true;
+        $post->save();
+
+        $response = $this->get('/api/givingteam/blog/posts/' . $post->slug);
+        $data = json_decode($response->getContent(), true);
+
+        $response->assertStatus(200);
+        $this->assertEquals($post->id, $data['id']);
     }
 }
